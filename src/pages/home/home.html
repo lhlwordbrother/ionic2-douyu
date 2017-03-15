@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>首页</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="banner">
+    <ion-slides pager loop=true autoplay=3000>
+      <ion-slide *ngFor="let item of bannerData; let i = index;">
+        <a href="room/{{item.room_id}}">
+          <p>{{item.room_name}}</p>
+          <img src="{{item.room_src}}" alt="">
+        </a>
+      </ion-slide>
+    </ion-slides>
+  </div>
+  <ul>
+    <li *ngFor="let item of data">
+      <a href="room/{{item.room_id}}">
+          <p>{{item.room_name}}</p>
+          <img src="{{item.room_src}}" alt="">
+        </a>
+    </li>
+  </ul>
+</ion-content>

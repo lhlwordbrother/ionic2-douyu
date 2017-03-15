@@ -1,0 +1,24 @@
+<ion-menu [content]="content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>斗鱼TV</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <button ion-item (click)="hot()">
+        首页
+      </button>
+      <button ion-item (click)="hot()">
+        全部分类
+      </button>
+      <button ion-item (click)="hot()">
+        推荐
+      </button>
+      <button ion-item (click)="hot()">
+        个人中心
+      </button>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+<ion-nav #content [root]="rootPage"></ion-nav>

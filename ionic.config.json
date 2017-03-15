@@ -1,0 +1,12 @@
+{
+  "name": "douyu",
+  "app_id": "",
+  "v2": true,
+  "typescript": true,
+  "proxies": [
+    {
+      "path":"/api",
+      "proxyUrl":"http://open.douyucdn.cn/api/RoomApi"
+    }
+  ]
+}
