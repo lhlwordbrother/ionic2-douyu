@@ -1,26 +1,42 @@
-<ion-header>
+<!--<ion-header>
   <ion-navbar>
     <ion-title>首页</ion-title>
   </ion-navbar>
-</ion-header>
+</ion-header>-->
 
 <ion-content>
+  <div class="header">
+    <div class="logo"></div>
+    <div class="btns">
+      <a class="search" href="/search/index">搜索</a>
+      <span class="split"></span>
+      <span class="classes">分类</span>
+    </div>
+  </div>
   <div class="banner">
-    <ion-slides pager loop=true autoplay=3000>
+    <ion-slides pager>
       <ion-slide *ngFor="let item of bannerData; let i = index;">
-        <a href="room/{{item.room_id}}">
-          <p>{{item.room_name}}</p>
-          <img src="{{item.room_src}}" alt="">
+        <a href="room/{{item.id}}" [attr.data-txt]="item.title">
+          <img src="{{item.pic_url}}" alt="">
         </a>
       </ion-slide>
     </ion-slides>
   </div>
-  <ul>
-    <li *ngFor="let item of data">
-      <a href="room/{{item.room_id}}">
-          <p>{{item.room_name}}</p>
-          <img src="{{item.room_src}}" alt="">
+  <div class="layout-rooms">
+    <div class="title"><span class="text">最热</span><span class="change" (click)="changeHot()">换一换</span></div>
+    <ul>
+      <li *ngFor="let item of hotList; let i = index;" [ngStyle]="{'animation-delay': (i*0.06)+'s'}">
+        <a href="/room/{{item.room_id}}">
+          <div class="room-show">
+            <img class="room-pic" [src]="item.room_src" alt="">
+            <div class="up-shadow"></div>
+            <span class="room-online">{{item.online}}</span>
+            <div class="bottom-shadow"></div>
+            <span class="room-nickname">{{item.nickname}}</span>
+          </div>
+          <div class="room-des">{{item.room_name}}</div>
         </a>
-    </li>
-  </ul>
+      </li>
+    </ul>
+  </div>
 </ion-content>

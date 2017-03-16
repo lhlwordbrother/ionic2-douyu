@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en" dir="ltr" style="font-size: 41.4px;">
 <head>
   <meta charset="UTF-8">
   <title>Ionic App</title>
@@ -36,6 +36,19 @@
 
   <!-- The bundle js is generated during the build process -->
   <script src="build/main.js"></script>
-
+  <script>
+        ;(function (doc, win, undefined) {
+          var docEl = doc.documentElement,
+            resizeEvt = 'orientationchange' in win? 'orientationchange' : 'resize',
+            recalc = function () {
+              var clientWidth = docEl.clientWidth;
+              if (clientWidth === undefined) return;
+              docEl.style.fontSize = (clientWidth / 10) + 'px';
+            };
+          if (doc.addEventListener === undefined) return;
+          win.addEventListener(resizeEvt, recalc, false);
+          doc.addEventListener('DOMContentLoaded', recalc, false)
+        })(document, window);
+  </script>
 </body>
 </html>

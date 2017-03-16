@@ -11,7 +11,15 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class Douyu {
   getList(listName){
-    let url = '/api/live/'+listName+'?limit=15';
+    let url = '/api/live/'+listName+'?limit=16';
+    return this.http.get(url).map(
+      (res:any) => {
+        return res.json();
+      }
+    );
+  }
+  getHomeData(){
+    let url = 'douyu/index/getHomeData';
     return this.http.get(url).map(
       (res:any) => {
         return res.json();

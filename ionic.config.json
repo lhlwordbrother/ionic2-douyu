@@ -7,6 +7,9 @@
     {
       "path":"/api",
       "proxyUrl":"http://open.douyucdn.cn/api/RoomApi"
+    },{
+      "path":"/douyu",
+      "proxyUrl":"https://m.douyu.com"
     }
   ]
 }

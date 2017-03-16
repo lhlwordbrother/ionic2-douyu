@@ -9,30 +9,29 @@ import {Douyu} from '../../providers/douyu';
   templateUrl: 'home.html'
 })
 export class HomePage {
-  data=[];//首页数据
+  allData:any;
   bannerData:any;//banner数据
-  hot() {
-    this.Douyu.getList('').subscribe(
+  hotList:any;//最热
+  hotListIndex = 0;
+  getHomeData() {
+    this.Douyu.getHomeData().subscribe(
       (data:any) => {
-        this.data = data.data;
-        console.log(this.data)
-        this.banner();
+        this.allData = data;
+        this.bannerData = data.banner;
+        this.hotList = data.hotList[this.hotListIndex].data;
       }
     );
   }
-  banner() {
-    let arr = [];
-    let sum = this.data.length;
-    let data1 = eval(JSON.stringify(this.data));
-    for(let i =0;i<5;i++){
-      let x = Math.floor( Math.random()*(sum--) );
-      arr.push(data1[x]);
-      data1.splice(x,1);
+  changeHot() {
+    let i = Math.floor(this.allData.hotList.length*Math.random());
+    if(i == this.hotListIndex){
+      this.hotListIndex==0?i++:i--;
     }
-    this.bannerData = arr;
+    this.hotListIndex = i;
+    this.hotList = this.allData.hotList[i].data;
   }
   constructor(public navCtrl: NavController,public Douyu:Douyu) {
-    this.hot();
+    this.getHomeData();
   }
 
 }
